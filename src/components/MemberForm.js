@@ -2,7 +2,7 @@ import React , { useState } from 'react';
 import axios from 'axios';
 
 const MemberForm = () => {
-    const [name,sertName] = useState('');
+    const [name,setName] = useState('');
     const [email,setEmail] = useState('');
 
     const handleSubmit = async (event) => {
@@ -42,4 +42,4 @@ const MemberForm = () => {
     )
 };
 
-export default MemberForm;
+export default MemberForm; 
