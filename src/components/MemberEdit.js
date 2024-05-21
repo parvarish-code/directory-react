@@ -5,6 +5,9 @@ const MemberEdit = ({memberId}) => {
 
     const [name,setName] = useState('');
     const [email,setEmail] = useState('');
+    const [member,setMember] = useState(null);
+    const [isLoading,setIsLoading] = useState(false);
+    const [error,setError] = useState(null);
 
     const handleSubmit = async () => {
         try {
@@ -21,9 +24,10 @@ const MemberEdit = ({memberId}) => {
         const fetchMember = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://localhost:3000/members/${memberId}`);
-                setName(response.data.name);
-                setEmail(response.data.email);
+                const response = await axios.get(`http://localhost:3001/members/${memberId}`);
+                setMember(response.data);
+                setName(member.name);
+                setEmail(member.email);
             } catch (error) {
                 setError(error)
             } finally{
