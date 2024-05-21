@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const MemberShow = ( { memberId } ) => {
@@ -6,15 +7,22 @@ const MemberShow = ( { memberId } ) => {
     const [isLoading,setIsLoading] = useState(false);
     const [error,setError] = useState(null);
 
+    const navigate = useNavigate();
+
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete this member?')){
             try {
                 await axios.delete(`http://localhost:3000/members/${memberId}`);
                 console.log('Member Deleted');
+                navigate('/');
             } catch (error) {
                 console.log('Error deleting member: ', error);
             }
         }
+    }
+
+    const navigateToEditPage = (id) => {
+        navigate(`/members/${id}/edit`);
     }
 
     useEffect(()=>{

@@ -49,3 +49,5 @@ const MemberEdit = ({memberId}) => {
     </form>
     )
 }
+
+export default MemberEdit;
