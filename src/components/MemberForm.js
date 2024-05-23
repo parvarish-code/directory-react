@@ -7,6 +7,8 @@ const MemberForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log(name)
+        console.log(email)
 
         try {
             const response = await axios.post('http://localhost:3001/members',{
