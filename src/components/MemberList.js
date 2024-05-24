@@ -22,7 +22,7 @@ const MemberList = () => {
 
     return (
         <div>
-            <h2>Member List</h2>
+            <h2 className="text-3xl font-bold underline">Member List</h2>
             <ul>
                 {
                     members.map(member => (
