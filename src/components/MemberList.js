@@ -21,14 +21,15 @@ const MemberList = () => {
     },[]);
 
     return (
-        <div>
-            <h2 className="text-3xl font-bold underline">Member List</h2>
-            <ul>
+        <div className="container mx-auto mt-8">
+            <h2 className="text-2xl font-semibold mb-4">Member List</h2>
+            <ul className="list-none p-0">
                 {
                     members.map(member => (
-                        <li key={member._id}>
+                        <li key={member._id} className="member-card">
                             <Link to={`/members/${member._id}`}>
-                            {member.name} ({member.email})
+                            <h3>{member.name}</h3>
+                            <p>{member.email}</p> 
                             </Link>
                             
                         </li>

@@ -58,8 +58,8 @@ const MemberShow = ( { memberId } ) => {
             <h2>Member Details</h2>
             <p><strong>Name:</strong> {member.name}</p>
             <p><strong>Email:</strong>{member.email}</p>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={() => {navigateToEditPage(id)}}>Edit</button>
+            <button onClick={handleDelete} className="bg-pastel-pink hover:bg-pink-200 text-white font-bold py-2 px-4 rounded">Delete</button>
+            <button onClick={() => {navigateToEditPage(id)}} className="bg-pastel-pink hover:bg-pink-200 text-white font-bold py-2 px-4 rounded">Edit</button>
         </div>
     )
 }
