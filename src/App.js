@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+import MainNavbar from './components/MainNavbar';
 import MemberList from './components/MemberList';
 import MemberForm from './components/MemberForm';
 import MemberShow from './components/MemberShow';
@@ -10,6 +11,7 @@ import './App.css';
 const App = () => {
   return (
     <Router>
+      <MainNavbar />
       <div>
         <Routes>
           <Route path='/' element={<MemberList />}/>

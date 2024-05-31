@@ -1,24 +1,24 @@
 import React , { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const MemberForm = () => {
     const [name,setName] = useState('');
     const [email,setEmail] = useState('');
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3001/members',{
+            await axios.post('http://localhost:3001/members',{
                 name,
                 email
             });
 
-            console.log(response.data);//Log the response from the server
 
-            //clear the form after submission
-            setName('');
-            setEmail('');
+            navigate('/');
 
             
         } catch (error) {
@@ -37,7 +37,7 @@ const MemberForm = () => {
                 <div className='invalid-feedback'>Please provide a name</div>
             </div>
             <div className='mb-3'>
-                <label htmlFor='email' classNamee='form-label'>Email:</label>
+                <label htmlFor='email' className='form-label'>Email:</label>
                 <input type='email' className='form-control' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
                 <div className='invalid-feedback'>Please provide an email</div>
             </div>
