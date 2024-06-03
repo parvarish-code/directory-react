@@ -5,6 +5,7 @@ import MemberList from './components/MemberList';
 import MemberForm from './components/MemberForm';
 import MemberShow from './components/MemberShow';
 import MemberEdit from './components/MemberEdit';
+import MemberRegister from './components/MemberRegister';
 import './App.css';
 
 
@@ -14,6 +15,7 @@ const App = () => {
       <MainNavbar />
       <div>
         <Routes>
+          <Route path='/register' element={<MemberRegister />}/>
           <Route path='/' element={<MemberList />}/>
           <Route path='/members/add' element={<MemberForm />}/>
           <Route path='/members/:id' element={<MemberShow />}/>
