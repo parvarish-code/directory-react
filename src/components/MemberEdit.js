@@ -48,22 +48,24 @@ const MemberEdit = () => {
     }
 
     return (
-        <>
-        <h2>Edit Member</h2>
-        {error && <div>Error fetching member : { error.message}</div>}
-        <form onSubmit={handleSubmit}>
+        <div className='container mt-4'>
+        <h2 className='mb-3'>Edit Member</h2>
+        {error && <div className='alert alert-danger'>Error fetching member : { error.message}</div>}
+        <form onSubmit={handleSubmit} className='needs-validation noValidate'>
 
-        <div>
-            <label htmlFor='name'>Name:</label>
-            <input type='text' id='name' value={name} onChange={(e) => setName(e.target.value)} required/>
+        <div className='mb-3'>
+            <label htmlFor='name' className='form-label'>Name:</label>
+            <input type='text' className='form-control' id='name' value={name} onChange={(e) => setName(e.target.value)} required/>
+            <div className='invalid-feedback'>Please provide a name</div>
         </div>
-        <div>
-            <label htmlFor='email'>Email:</label>
-            <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
+        <div className='mb-3'>
+            <label htmlFor='email' className='form-label'>Email:</label>
+            <input type='email' className='form-control' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
+            <div className='invalid-feedback'>Please provide an email</div>
         </div>
-        <button type='submit'>Edit Member</button>
+        <button type='submit' className='btn btn-primary'>Update Member</button>
     </form>
-    </>
+    </div>
     )
 }
 

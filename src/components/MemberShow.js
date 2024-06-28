@@ -54,12 +54,25 @@ const MemberShow = ( { memberId } ) => {
     }
 
     return (
-        <div>
-            <h2>Member Details</h2>
-            <p><strong>Name:</strong> {member.name}</p>
-            <p><strong>Email:</strong>{member.email}</p>
-            <button onClick={handleDelete} className="bg-pastel-pink hover:bg-pink-200 text-white font-bold py-2 px-4 rounded">Delete</button>
-            <button onClick={() => {navigateToEditPage(id)}} className="bg-pastel-pink hover:bg-pink-200 text-white font-bold py-2 px-4 rounded">Edit</button>
+        <div className='container mt-4'>
+            <div className='card'>
+                <div className='card-header'>
+                <h2 className='card-title'>Member Details</h2>
+                </div>
+                <div className='card-body'>
+                    <p className='card-text'>
+                        <strong>Name:</strong> {member.name}
+                    </p>
+                    <p className='card-text'>
+                        <strong>Email:</strong> {member.email}
+                    </p>
+                </div>
+                <div className='card-footer d-flex justify-content-between'>
+                    <button onClick={handleDelete} className='btn btn-danger'>Delete</button>
+                    <button onClick={()=>navigateToEditPage(id)} className='btn btn-secondary'>Edit</button>
+                </div>
+            </div>
+            
         </div>
     )
 }
