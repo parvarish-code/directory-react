@@ -1,5 +1,6 @@
 import React , { useState,useContext} from "react";
 import { Form, Button,Alert } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 import axios from 'axios';
@@ -12,7 +13,7 @@ const MemberLogin = () => {
     const [ password,setPassword] = useState('');
     const { isAuthenticated,setIsAuthenticated,setMemberData,error,setError,setIsLoading,token,setToken } = useContext(AuthContext);//Get login function from context
     
-
+const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -31,9 +32,7 @@ const MemberLogin = () => {
             setError(null);
             setIsLoading(false);
 
-            
-            // await login(email,password);
-            //Redirect after successful login
+            navigate('/')
             
         } catch (error) {
             setError('Invalid Credentials');
@@ -47,8 +46,7 @@ const MemberLogin = () => {
             <h2 className="mb-3">Login</h2>
             {error && <Alert variant='danger'>{error}</Alert>}
 
-            <p>TOKEN : {token}</p>
-            <p>Auth status : {isAuthenticated ? 'IN' : 'OUT'}</p>
+            
 
             <Form onSubmit={handleSubmit}>
                 <Form.Group className='mb-3' controlId='formBasicEmail'>
