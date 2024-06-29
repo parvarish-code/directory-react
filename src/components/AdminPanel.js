@@ -1,11 +1,25 @@
 import React , { useState,useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link,useParams,useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie";
 
 const AdminPanel = () => {
     const [members,setMembers] = useState([]);
+
+    const navigate = useNavigate();
+    const {id} = useParams();
+
+    const handleDelete = async (id) => {
+        if (window.confirm('Are you sure you want to delete this member?')){
+            try {
+                await axios.delete(`http://localhost:3001/members/${id}`);
+                navigate('/');
+            } catch (error) {
+                console.log('Error deleting member: ', error);
+            }
+        }
+    }
 
     useEffect(()=>{
         const fetchMembers = async () => {
@@ -43,10 +57,10 @@ const AdminPanel = () => {
                             <td>{member.name}</td>
                             <td>{member.email}</td>
                             <td>
-                                <Link to={``} className='btn btn-sm btn-secondary me-2'>
+                                <Link to={`/members/${member._id}/edit`} className='btn btn-sm btn-secondary me-2'>
                                     Edit
                                 </Link>
-                                <button className='btn btn-sm btn-danger'>Delete</button>
+                                <button className='btn btn-sm btn-danger' onClick={()=>handleDelete(member._id)}>Delete</button>
                             </td>
                         </tr>
                     })}

@@ -1,5 +1,5 @@
 import React,{ useContext} from 'react';
-import { Outlet } from 'react-router-dom';
+import {    Outlet } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 const ProtectedRoute = ({ requiresAdmin = false }) => {
@@ -8,7 +8,7 @@ const ProtectedRoute = ({ requiresAdmin = false }) => {
 
     const { isAuthenticated } = useContext(AuthContext);
 
-    console.log(isAuthenticated)
+    
     
     if(!isAuthenticated){
         return <p>Not Authorized yet</p>
