@@ -10,6 +10,7 @@ import AdminPanel from './components/AdminPanel';
 import ProtectedRoute from './components/ProtectedRoute';
 import MemberLogin from './components/MemberLogin';
 import './App.css';
+import BulletinBoard from './components/BulletinBoard';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route element={<ProtectedRoute/>}>
             <Route path='/admin/members' element={<AdminPanel/>}/>
           </Route>
+          <Route path='/bulletin' element={<BulletinBoard/>}/>
         </Routes>
     </div>
     </Router>
