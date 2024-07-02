@@ -28,7 +28,7 @@ const App = () => {
           <Route element={<ProtectedRoute/>}>
             <Route path='/admin/members' element={<AdminPanel/>}/>
           </Route>
-          <Route path='/bulletin' element={<BulletinBoard/>}/>
+          <Route path='/bulletin/:id' element={<BulletinBoard/>}/>
         </Routes>
     </div>
     </Router>

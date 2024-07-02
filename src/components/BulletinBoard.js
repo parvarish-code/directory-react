@@ -1,16 +1,43 @@
 import axios from 'axios';
 import { React,useEffect,useState} from 'react';
+import { Accordion } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
 const BulletinBoard = () => {
 
     const [ messages,setMessages ] = useState([]);
+    const [author,setAuthor] = useState(null);
+    const { id } = useParams();
 
     const renderMessages = messages.map(message => {
-        return <li key={message._id}>{message.text}</li>
+        return (
+            <Accordion defaultActiveKey='0' key={message._id} className='my-3'>
+                <Accordion.Item eventKey='0'>
+                    <Accordion.Header>{message.heading}</Accordion.Header>
+                    <Accordion.Body>
+                        {message.body}
+                        <hr />
+                        {message.date}
+                        <hr />
+                        {author.name}
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
+        )
     })
 
     
     useEffect(()=>{
+
+        const fetchAuthor = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3001/members/${id}`);
+                
+                setAuthor(response.data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
 
         const fetchMessages = async () => {
 
@@ -24,6 +51,7 @@ const BulletinBoard = () => {
            
         }
         fetchMessages();
+        fetchAuthor();
     },[]);
 
     return (

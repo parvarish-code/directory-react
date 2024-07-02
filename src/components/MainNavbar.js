@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 
 const MainNavbar = () => {
 
-    const { isAuthenticated,setIsAuthenticated,setMemberData,token,setToken } = useContext(AuthContext);
+    const { isAuthenticated,setIsAuthenticated,memberData,setMemberData,token,setToken } = useContext(AuthContext);
 
     const logout = () => {
         Cookies.remove('token');
@@ -37,6 +37,7 @@ const MainNavbar = () => {
                                     <>
                                     <Nav.Link href='/bulletin'>Bulletin</Nav.Link>
                                     <Nav.Link onClick={logout}>Logout</Nav.Link>
+                                    <Nav.Link>{memberData.name}</Nav.Link>
                                     </>
                                 )
                             }
